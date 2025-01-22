@@ -3,33 +3,33 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #f5f5f5;
     text-align: left;
+    display: flex; /* Enable Flexbox for body */
+    flex-direction: column; /* Stack the sections vertically */
+    justify-content: flex-start; /* Align items to the top */
+    gap: 20px; /* Add space between the sections */
+    padding: 20px; /* Add padding to the body */
 }
+
 h1 {
     margin-top: 30px;
     color: #333;
     text-align: left;
 }
 
-.contact-info {
+.contact-info, .about-me {
     background-color: #ffffff;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     width: fit-content;
-    margin: 20px auto;
     text-align: left;
 }
 
-.contact-info p {
-    margin: 5px 0;
-    color: #555
+.contact-info img {
+    border: 1px solid black;
+    margin: 10px;
 }
 
 .about-me {
-    background-color: #ffffff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    width: fit-content;
-    text-align: left;
+    background-color: #f9f9f9; /* Change background to make it distinct */
 }
