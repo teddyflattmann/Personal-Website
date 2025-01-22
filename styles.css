@@ -24,3 +24,12 @@ h1 {
     margin: 5px 0;
     color: #555
 }
+
+.about-me {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: fit-content;
+    text-align: left;
+}
