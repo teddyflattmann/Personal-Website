@@ -17,7 +17,7 @@ h1 {
 }
 
 .container {
-    display: flex /*enables flexbox*/
+    display: flex; /*enables flexbox*/
     align-items: center /* Aligns items vertically in the center */
 }
 
