@@ -16,6 +16,12 @@ h1 {
     text-align: left;
 }
 
+.container {
+    display: flex /*enables flexbox*/
+    align-items: center /* Aligns items vertically in the center */
+}
+
+
 .contact-info, .about-me {
     background-color: #ffffff;
     padding: 20px;
