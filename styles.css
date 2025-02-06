@@ -18,7 +18,8 @@ h1 {
 
 .container {
     display: flex; /*enables flexbox*/
-    align-items: center /* Aligns items vertically in the center */
+    align-items: stretch /* Aligns items vertically in the center */
+    gap: 20px;
 }
 
 
@@ -29,6 +30,11 @@ h1 {
     border-radius: 10px;
     width: fit-content;
     text-align: left;
+    display: flex; /* Enables flexbox for inner content */
+    flex-direction: column; /* Ensures content stacks properly */
+    justify-content: center; /* Centers content inside the containers */
+    flex: 1; /* Makes both sections take equal space */
+    min-height: 250px; /* Ensures they don’t collapse */
 }
 
 .contact-info img {
