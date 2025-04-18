@@ -3,32 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <link href="styles.css" rel="stylessheet">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Hi, I'm Theodore Flattmann!</h1>
-    <div class="tab"> 
-        <button class="tab-link" onclick="openTab(event, 'aboutMe')">About Me</button>
-        <button class="tab-link" onclick="openTab(event, 'project1')">Project 1</button>
+    <ul class="tabs">
+        <li> data-tab-target="#home" class="active tab">About</li>
+        <li> data-tab-target="#projects" class="tab">Projects</li>
+        <li> data-tab-target="personal" class="tab">Personal</li>
+    </ul>
+<div class="tab-content">
+    <div id="about" data-tab-content class="active">
+        <h1>About</h1>
+        <p>about me tab</p>
     </div>
-
-    <div id="aboutMe" class="content">
-        <p>Email: <a href="mailto:teddyflattmann@gmail.com">teddyflattmann@gmail.com</a></p>
-        <p>Phone: <a href="tel:+19176908446">(917) 690-8446</a></p>
-        <img src="https://i.imgur.com/VBjaKuS.jpg"
-            style="border: 1px solid black; margin: 10px;" 
-            alt="LinkedIn Profile Picture">
-        <p>A little about me... 
-            I am a data enthusiast with a strong background in business intelligence, 
-            data analysis, and capital markets research. I love creating meaningful insights 
-            from data and helping businesses make data-driven decisions. Outside of work, 
-            I enjoy skiing, exploring new places, and learning new technologies.
-        </p>
+    <div id="projects" data-tab-content>
+        <h1>About</h1>
+        <p>list of projects ive done</p>
     </div>
-
-    <div id="project1" class="content">
-        <h3> 'Project Name Goes Here'</h3>
+    <div id="personal" data-tab-content>
+        <h1>Personal</h1>
+        <p>some cool personal info</p>
+    </div>
+</div>
+</body>
+</html>
         <p> 'Details about project go here'</p>
     </div>
     </body>
