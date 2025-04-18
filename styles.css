@@ -11,7 +11,6 @@ body {
     margin: 0;
 }
 
-
 .tabs {
     display: flex;
     justify-content: space-around;
@@ -31,14 +30,14 @@ body {
 }
 
 .tab:hover {
-    background-color: #AAA
+    background-color: #AAA;
 }
 
 .tab-content {
     margin-left: 20px;
-    margin-right: 20px
-}
+    margin-right: 20px;
     background-color: #f9f9f9; /* Change background to make it distinct */
-    font-size: 2rem; /* Increasing font size*/
-    line-height: 1.6; /* Increasing line spacing for readability*/
+    font-size: 2rem; /* Increasing font size */
+    line-height: 1.6; /* Increasing line spacing for readability */
 }
+
