@@ -1,48 +1,43 @@
+[data-tab-content] {
+    display: none;
+}
+
+.active[data-tab-content] {
+    display: block;
+}
+
 body {
+    padding: 0;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f5f5f5;
-    text-align: left;
-    display: flex; /* Enable Flexbox for body */
-    flex-direction: column; /* Stack the sections vertically */
-    justify-content: flex-start; /* Align items to the top */
-    gap: 20px; /* Add space between the sections */
-    padding: 20px; /* Add padding to the body */
-}
-
-h1 {
-    margin-top: 30px;
-    color: #333;
-    text-align: left;
-}
-
-.container {
-    display: flex; /*enables flexbox*/
-    align-items: stretch /* Aligns items vertically in the center */
-    gap: 20px;
 }
 
 
-.contact-info, .about-me {
-    background-color: #ffffff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    width: fit-content;
-    text-align: left;
-    display: flex; /* Enables flexbox for inner content */
-    flex-direction: column; /* Ensures content stacks properly */
-    justify-content: center; /* Centers content inside the containers */
-    flex: 1; /* Makes both sections take equal space */
-    min-height: 250px; /* Ensures they don’t collapse */
-}
-
-.contact-info img {
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     border: 1px solid black;
-    margin: 10px;
 }
 
-.about-me {
+.tab {
+    cursor: pointer;
+    padding: 10px;
+}
+
+.tab.active {
+    background-color: #CCC;
+}
+
+.tab:hover {
+    background-color: #AAA
+}
+
+.tab-content {
+    margin-left: 20px;
+    margin-right: 20px
+}
     background-color: #f9f9f9; /* Change background to make it distinct */
     font-size: 2rem; /* Increasing font size*/
     line-height: 1.6; /* Increasing line spacing for readability*/
