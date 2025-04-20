@@ -40,12 +40,38 @@ body {
     font-size: 2rem; /* Increasing font size */
     line-height: 1.6; /* Increasing line spacing for readability */
 }
+.trip-toggle {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.trip-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #eee;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.trip-btn:hover {
+    background-color: #ddd;
+}
+
+.trip-btn.active {
+    background-color: #333;
+    color: #fff;
+}
 
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
     margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 .gallery img {
@@ -60,4 +86,5 @@ body {
 .gallery img:hover {
     transform: scale(1.05);
 }
+
 
