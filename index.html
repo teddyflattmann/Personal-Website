@@ -25,18 +25,47 @@
 <div id="personal" data-tab-content>
     <h1>Personal</h1>
     <p>some cool personal info</p>
-    <div class="gallery">
-        <img src="images/deweypoint/clearing.jpg" alt="clearing">
-        <img src="images/deweypoint/deweypoint.jpg" alt="dewerpoint">
-        <img src="images/deweypoint/ridge.jpg" alt="ridge">
-        <img src="images/deweypoint/snowshoes.jpg" alt="snowshoes">
-        <img src="images/deweypoint/snowwell.jpg" alt="snowwell">
-        <img src="images/deweypoint/trail.jpg" alt="trail">
-        <img src="images/deweypoint/valley.jpg" alt="valley">
-        <img src="images/deweypoint/valley1.jpg" alt="valley1">
-        <!-- Add more images here -->
+
+    <!-- Trip toggle buttons -->
+    <div class="trip-toggle">
+        <button class="trip-btn active" data-trip="dewey">Dewey Point</button>
+        <button class="trip-btn" data-trip="yosemite">Yosemite</button>
+        <button class="trip-btn" data-trip="mammoth">Mammoth</button>
+    </div>
+
+    <!-- Dewey Point Gallery -->
+    <div class="gallery-section" id="dewey">
+        <div class="gallery">
+            <img src="images/deweypoint/clearing.jpg" alt="clearing">
+            <img src="images/deweypoint/deweypoint.jpg" alt="deweypoint">
+            <img src="images/deweypoint/ridge.jpg" alt="ridge">
+            <img src="images/deweypoint/snowshoes.jpg" alt="snowshoes">
+            <img src="images/deweypoint/snowwell.jpg" alt="snowwell">
+            <img src="images/deweypoint/trail.jpg" alt="trail">
+            <img src="images/deweypoint/valley.jpg" alt="valley">
+            <img src="images/deweypoint/valley1.jpg" alt="valley1">
+        </div>
+    </div>
+
+    <!-- Yosemite Gallery -->
+    <div class="gallery-section" id="yosemite" style="display: none;">
+        <div class="gallery">
+            <img src="images/yosemite/lake.jpg" alt="lake">
+            <img src="images/yosemite/campsite.jpg" alt="campsite">
+            <img src="images/yosemite/cliffs.jpg" alt="cliffs">
+        </div>
+    </div>
+
+    <!-- Mammoth Gallery -->
+    <div class="gallery-section" id="mammoth" style="display: none;">
+        <div class="gallery">
+            <img src="images/mammoth/forest.jpg" alt="forest">
+            <img src="images/mammoth/lakeview.jpg" alt="lakeview">
+            <img src="images/mammoth/peak.jpg" alt="peak">
+        </div>
     </div>
 </div>
+
 </div>
 </body>
 </html>
