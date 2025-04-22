@@ -155,3 +155,43 @@ body {
 
 
 
+/* About Section Layout */
+.about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.bio {
+    max-width: 600px;
+}
+
+.profile {
+    flex-shrink: 0;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Make sure the content is responsive on smaller screens */
+@media screen and (max-width: 768px) {
+    .about {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+        margin: 20px 0;
+    }
+}
+
+
+
