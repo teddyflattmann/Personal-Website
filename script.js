@@ -36,3 +36,32 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+// Image expansion modal
+document.addEventListener("DOMContentLoaded", () => {
+    const images = document.querySelectorAll('#personal .gallery img');
+    
+    images.forEach(img => {
+        img.addEventListener('click', () => {
+            openModal(img.src, img.alt);
+        });
+    });
+
+    // Close modal when clicking the overlay or close button
+    const modal = document.getElementById('imageModal');
+    modal.addEventListener('click', (e) => {
+        if (e.target.id === 'imageModal' || e.target.classList.contains('close-modal')) {
+            modal.style.display = 'none';
+        }
+    });
+});
+
+function openModal(src, alt) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const caption = document.getElementById('modalCaption');
+
+    modal.style.display = 'flex';
+    modalImg.src = src;
+    caption.textContent = alt;
+}
