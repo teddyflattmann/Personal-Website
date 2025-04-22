@@ -11,140 +11,91 @@
     <ul class="tabs">
         <li data-tab-target="#about" class="active tab">About</li>
         <li data-tab-target="#projects" class="tab">Projects</li>
-        <li data-tab-target="#personal" class="tab">Hobbies</li>
+        <li data-tab-target="#Hobbies" class="tab">Hobbies</li> <!-- Corrected -->
     </ul>
-<div class="tab-content">
 
-<!-- About tab -->
-    <div id="about" data-tab-content class="active">
-        <div class="container">
-        <section class="about>
-            <div class="bio"
-            <h1>Hi,</h1>
-            <p>I'm Theodore Flattmann, a data professional specializing in data management, engineering, and analytics. With hands-on experience in building data pipelines, crafting data architecture, and creating ETL workflows, I am passionate about transforming raw data into actionable insights.</p>
-            <h2>My technical skill set includes:</h2>
-                <ul>
-                <li><strong>Data Engineering:</strong> Creating efficient data pipelines, working with data architecture, and integrating systems.</li>
-                <li><strong>Data Warehousing:</strong> Expertise in Snowflake and DOMO.</li>
-                <li><strong>Data Analytics & Visualization:</strong> Proficient in using Tableau, DOMO, and machine learning techniques to turn complex data into clear, visual stories.</li>
-                <li><strong>Programming & Scripting:</strong> Skilled in SQL, Python, HTML, and JavaScript.</li>
-                <li><strong>Certifications:</strong> Alteryx Core Certification.</li>
-                </ul>
-            <p>I thrive in collaborative environments and enjoy solving complex problems through data. Whether it's optimizing workflows or diving deep into analytics, my goal is always to deliver clear, effective, and scalable solutions.</p>
-            </div>    
-        <div> class= "profile"
-                <img src="addphotoimagehere" alt="Theodore Flattmann" class="Profile-Pic">
-        </div>
-        </section>
+    <div class="tab-content">
+        <!-- About tab -->
+        <div id="about" data-tab-content class="active">
+            <div class="container">
+                <section class="about">
+                    <div class="bio">
+                        <h1>Hi,</h1>
+                        <p>I'm Theodore Flattmann, a data professional specializing in data management, engineering, and analytics. With hands-on experience in building data pipelines, crafting data architecture, and creating ETL workflows, I am passionate about transforming raw data into actionable insights.</p>
+                        <h2>My technical skill set includes:</h2>
+                        <ul>
+                            <li><strong>Data Engineering:</strong> Creating efficient data pipelines, working with data architecture, and integrating systems.</li>
+                            <li><strong>Data Warehousing:</strong> Expertise in Snowflake and DOMO.</li>
+                            <li><strong>Data Analytics & Visualization:</strong> Proficient in using Tableau, DOMO, and machine learning techniques to turn complex data into clear, visual stories.</li>
+                            <li><strong>Programming & Scripting:</strong> Skilled in SQL, Python, HTML, and JavaScript.</li>
+                            <li><strong>Certifications:</strong> Alteryx Core Certification.</li>
+                        </ul>
+                        <p>I thrive in collaborative environments and enjoy solving complex problems through data. Whether it's optimizing workflows or diving deep into analytics, my goal is always to deliver clear, effective, and scalable solutions.</p>
+                    </div>    
+                    <div class="profile">
+                        <img src="addphotoimagehere" alt="Theodore Flattmann" class="Profile-Pic">
+                    </div>
+                </section>
 
-    <!-- Certificates Section -->
-        <section class="certifications">
-            <h2>Certifications</h2>
-            <div class="certificates">
-            <div class="certificate">
-            <h3>Alteryx Core Certification</h3>
-            <img src="alteryx-cert.jpg" alt="Alteryx Core Certification">
+                <!-- Certificates Section -->
+                <section class="certifications">
+                    <h2>Certifications</h2>
+                    <div class="certificates">
+                        <div class="certificate">
+                            <h3>Alteryx Core Certification</h3>
+                            <img src="alteryx-cert.jpg" alt="Alteryx Core Certification">
+                        </div>
+                    </div>
+                </section>
             </div>
+        </div>
+
+        <!-- Projects tab -->
+        <div id="projects" data-tab-content>
+            <h1>About</h1>
+            <p>List of projects I've done</p>
+        </div>
+
+        <!-- Hobbies tab -->
+        <div id="Hobbies" data-tab-content>
+            <h1>Backpacking & Photography in the Sierra Nevada</h1>
+            <p>Outside of work, I spend time backpacking in the Sierra Nevada and documenting these trips through photography. It’s a way for me to disconnect, challenge myself, and appreciate the outdoors. This section features photos from various multi-day hikes — captured as they happened, without setups or editing.</p>
+
+            <!-- Trip toggle buttons -->
+            <div class="trip-toggle">
+                <button class="trip-btn active" data-trip="dewey">Dewey Point</button>
+                <button class="trip-btn" data-trip="clark_range">Clark Range</button>
             </div>
-            </section>
+
+            <!-- Dewey Point Gallery -->
+            <div class="gallery-section" id="dewey">
+                <div class="gallery">
+                    <figure>
+                        <img src="images/deweypoint/deweypoint.jpg" alt="Dewey Point">
+                        <figcaption>Dewey Point</figcaption>
+                    </figure>
+                    <!-- More figures... -->
+                </div>
+            </div>
+
+            <!-- Clark Range Gallery -->
+            <div class="gallery-section" id="clark_range" style="display: none;">
+                <div class="gallery">
+                    <figure>
+                        <img src="images/clark_range/clark_range.jpg" alt="Clark Range">
+                        <figcaption>Clark Range</figcaption>
+                    </figure>
+                    <!-- More figures... -->
+                </div>
+            </div>
         </div>
-        </div>
-
-<!-- Project tab-->
-    <div id="projects" data-tab-content>
-        <h1>About</h1>
-        <p>list of projects ive done</p>
-    </div>
-<div id="Hobbies" data-tab-content>
-    <h1>Backpacking & Photography in the Sierra Neveda</h1>
-    <p>Outside of work, I spend time backpacking in the Sierra Nevada and documenting these trips through photography. It’s a way for me to disconnect, challenge myself, and appreciate the outdoors. This section features photos from various multi-day hikes — captured as they happened, without setups or editing.</p>
-
-    <!-- Trip toggle buttons -->
-    <div class="trip-toggle">
-        <button class="trip-btn active" data-trip="dewey">Dewey Point</button>
-        <button class="trip-btn" data-trip="clark_range">Clark Range</button>
     </div>
 
-
-<!-- Dewey Point Gallery -->
-<div class="gallery-section" id="dewey">
-    <div class="gallery">
-        <figure>
-            <img src="images/deweypoint/deweypoint.jpg" alt="Dewey Point">
-            <figcaption>Dewey Point</figcaption>
-        </figure>
-        <figure>
-            <img src="images/deweypoint/ridge.jpg" alt="Ridge">
-            <figcaption>Ridge</figcaption>
-        </figure>
-        <figure>
-            <img src="images/deweypoint/snowwell.jpg" alt="Snowwell">
-            <figcaption>Snowwell</figcaption>
-        </figure>
-        <figure>
-            <img src="images/deweypoint/valley.jpg" alt="Valley">
-            <figcaption>Valley</figcaption>
-        </figure>
-        <figure>
-            <img src="images/deweypoint/valley1.jpg" alt="Valley View">
-            <figcaption>Valley View</figcaption>
-        </figure>
-        <figure>
-            <img src="images/deweypoint/snowshoes.jpg" alt="Snowshoes">
-            <figcaption>Snowshoes</figcaption>
-        </figure>
-        <figure>
-            <img src="images/deweypoint/clearing.jpg" alt="Clearing">
-            <figcaption>Clearing</figcaption>
-        </figure>
-        <figure>
-            <img src="images/deweypoint/trail.jpg" alt="Trail">
-            <figcaption>Trail</figcaption>
-        </figure>
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImg">
+        <div id="modalCaption" class="caption"></div>
     </div>
-</div>
-
-<!-- Clark Range Gallery -->
-<div class="gallery-section" id="clark_range" style="display: none;">
-    <div class="gallery">
-        <figure>
-            <img src="images/clark_range/clark_range.jpg" alt="Clark Range">
-            <figcaption>Clark Range</figcaption>
-        </figure>
-        <figure>
-            <img src="images/clark_range/half_dome.jpg" alt="Half Dome">
-            <figcaption>Half Dome</figcaption>
-        </figure>
-        <figure>
-            <img src="images/clark_range/little_yosemite_valley.jpg" alt="Little Yosemite Valley">
-            <figcaption>Little Yosemite Valley</figcaption>
-        </figure>
-        <figure>
-            <img src="images/clark_range/little_yosemite_valley_1.jpg" alt="Little Yosemite Valley 1">
-            <figcaption>Little Yosemite Valley 1</figcaption>
-        </figure>
-        <figure>
-            <img src="images/clark_range/little_yosemite_valley_2.jpg" alt="Little Yosemite Valley 2">
-            <figcaption>Little Yosemite Valley 2</figcaption>
-        </figure>
-        <figure>
-            <img src="images/clark_range/little_yosemite_valley_3.jpg" alt="Little Yosemite Valley 3">
-            <figcaption>Little Yosemite Valley 3</figcaption>
-        </figure>
-        <figure>
-            <img src="images/clark_range/mono_meadow.jpg" alt="Mono Meadow">
-            <figcaption>Mono Meadow</figcaption>
-        </figure>
-    </div>
-</div>
- 
-</div>
-</div>
-<div id="imageModal" class="modal">
-    <span class="close-modal">&times;</span>
-    <img class="modal-content" id="modalImg">
-    <div id="modalCaption" class="caption"></div>
-</div>
-    
 </body>
 </html>
