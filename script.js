@@ -19,8 +19,8 @@ tabs.forEach(tab => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const tripButtons = document.querySelectorAll('#personal .trip-btn');
-    const tripSections = document.querySelectorAll('#personal .gallery-section');
+    const tripButtons = document.querySelectorAll('#hobbies .trip-btn');
+    const tripSections = document.querySelectorAll('#hobbies .gallery-section');
 
     tripButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Image expansion modal
 document.addEventListener("DOMContentLoaded", () => {
-    const images = document.querySelectorAll('#personal .gallery img');
+    const images = document.querySelectorAll('#hobbies .gallery img');
     
     images.forEach(img => {
         img.addEventListener('click', () => {
