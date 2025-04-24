@@ -257,3 +257,25 @@ body {
   font-size: 1rem;
 }
 
+/* FOOTER */
+.footer {
+    background-color: #f1f1f1;  /* Light grey background */
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #ccc;
+}
+
+.footer a {
+    color: #0077b5;  /* LinkedIn blue */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
