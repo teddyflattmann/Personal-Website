@@ -11,6 +11,17 @@ body {
     margin: 0;
 }
 
+.name-label {
+    position: absolute;
+    top: 10px;  /* Adjust vertical positioning */
+    left: 10px;  /* Align to the far left */
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: left;
+}
+
+
 .tabs {
     display: flex;
     background-color: #0f172a;
