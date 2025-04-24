@@ -22,19 +22,19 @@ body {
 }
 
 .tab {
-    cursor: pointer;
-    padding: 10px;
-    color: #94a3b8;
-}
-
-
-.tab.active {
-    background-color: #CCC;
-    color: #ffffff;
+  color: #94a3b8; /* Inactive tab */
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .tab:hover {
-    background-color: #AAA;
+  color: #cbd5e1;
+}
+
+.tab.active {
+  color: #e2e8f0; /* Active tab text */
+  border-bottom: 2px solid #3b82f6; /* Clean accent */
 }
 
 .tab-content {
