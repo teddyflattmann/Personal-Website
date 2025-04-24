@@ -13,6 +13,7 @@ body {
 
 .tab-header {
     display: flex;
+    background-color: #0f172a;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
