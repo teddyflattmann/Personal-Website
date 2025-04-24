@@ -222,7 +222,7 @@ body {
 /* About tab */
 .bio h1,
 .bio h2 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #333;
   margin-bottom: 0.5em;
 }
@@ -235,7 +235,7 @@ body {
 }
 
 .bio ul {
-  padding-left: 1.5em;
+  padding-left: 1.25em;
   margin-bottom: 1em;
 }
 
