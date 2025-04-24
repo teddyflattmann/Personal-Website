@@ -13,7 +13,7 @@ body {
 
 .tabs {
     display: flex;
-    background-color: #f0f0f0;
+    background-color: #FFFFFF;
     justify-content: flex-end;
     list-style-type: none;
     margin: 0;
@@ -37,7 +37,7 @@ body {
 .tab-content {
     margin-left: 20px;
     margin-right: 20px;
-    background-color: #f9f9f9; /* Change background to make it distinct */
+    background-color: #FFFFFF; /* Change background to make it distinct */
     font-size: 5.0rem; /* Increasing font size */
     line-height: 2.1; /* Increasing line spacing for readability */
 }
