@@ -14,7 +14,7 @@ body {
 .tabs {
     display: flex;
     background-color: #f0f0f0;
-    justify-content: space-around;
+    justify-content: flex-end;
     list-style-type: none;
     margin: 0;
     padding: 0;
