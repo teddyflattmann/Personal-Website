@@ -244,6 +244,7 @@ body {
   font-size: 1rem;
 }
 
+
 /* PROJECTS tab */
 #projects h1 {
   font-size: 1.25rem; /* You can adjust this to something like 1.25rem for even smaller */
@@ -254,6 +255,7 @@ body {
 }
 
 /* HOBBIES tab */
+
 #Hobbies h1 {
   font-size: 1.25rem;
 }
@@ -269,4 +271,30 @@ border-radius: 12px;
 margin-top: 16px;
 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* soft shadow */
 font-size: 1rem;
+}
+
+.hobbies h1,
+.hobbies h2 {
+  max-width: 800px;
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 0.5em;
+}
+
+.hobbies p {
+  max-width: 800px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1em;
+}
+
+.hobbies ul {
+  padding-left: 1.25em;
+  margin-bottom: 1em;
+}
+
+.hobbies li {
+  margin-bottom: 0.5em;
+  font-size: 1rem;
 }
