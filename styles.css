@@ -262,4 +262,11 @@ body {
   font-size: 1rem;
 }
 
-
+.highlight-paragraph {
+background-color: #f1f1f1; /* light gray */
+padding: 16px;
+border-radius: 12px;
+margin-top: 16px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* soft shadow */
+font-size: 1rem;
+}
