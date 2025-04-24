@@ -13,6 +13,7 @@ body {
 
 .tabs {
     display: flex;
+    background-color: #f0f0f0;
     justify-content: space-around;
     list-style-type: none;
     margin: 0;
