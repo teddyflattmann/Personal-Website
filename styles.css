@@ -193,5 +193,30 @@ body {
     }
 }
 
+/* ABOUT tab */
+#about h1 {
+  font-size: 1.25rem; /* You can adjust this to something like 1.25rem for even smaller */
+}
 
+#about p {
+  font-size: 1rem; /* Adjust as needed */
+}
+
+/* PROJECTS tab */
+#projects h1 {
+  font-size: 1.25rem; /* You can adjust this to something like 1.25rem for even smaller */
+}
+
+#projects p {
+  font-size: 1rem; /* Adjust as needed */
+}
+
+/* HOBBIES tab */
+#Hobbies h1 {
+  font-size: 1.25rem;
+}
+
+#Hobbies p {
+  font-size: 1rem;
+}
 
