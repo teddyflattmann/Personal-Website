@@ -173,8 +173,8 @@ body {
 }
 
 .profile-pic {
-    width: 250px; /* Increase size */
-    height: 250px;
+    width: 350px; /* Increase size */
+    height: 350px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Softer, deeper shadow */
