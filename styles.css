@@ -179,7 +179,8 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    font-size: 1.5rem; /* Increasing font size */}
+    font-size: 1.5rem;
+}
 
 .bio {
     max-width: 600px;
