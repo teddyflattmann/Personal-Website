@@ -39,7 +39,7 @@ body {
     margin-right: 20px;
     background-color: #f9f9f9; /* Change background to make it distinct */
     font-size: 5.0rem; /* Increasing font size */
-    line-height: 5.0; /* Increasing line spacing for readability */
+    line-height: 2.1; /* Increasing line spacing for readability */
 }
 .trip-toggle {
     margin-top: 1rem;
