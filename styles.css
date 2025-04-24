@@ -24,10 +24,13 @@ body {
 .tab {
     cursor: pointer;
     padding: 10px;
+    color: #94a3b8;
 }
+
 
 .tab.active {
     background-color: #CCC;
+    color: #ffffff;
 }
 
 .tab:hover {
