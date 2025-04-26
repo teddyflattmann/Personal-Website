@@ -1,125 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer></script>
-    <link href="styles.css" rel="stylesheet">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="script.js" defer></script>
+  <link href="styles.css" rel="stylesheet">
+  <title>Document</title>
 </head>
 <body>
-    <div class="tab-header">
+  <div class="tab-header">
     <div class="name-label">Theodore Flattmann</div>
     <ul class="tabs">
-        <li data-tab-target="#about" class="active tab">About</li>
-        <li data-tab-target="#portfolio" class="tab">Portfolio</li>
-        <li data-tab-target="#Hobbies" class="tab">Hobbies</li> 
-        <li data-tab-target="#contact" class="tab">Contact</li>
+      <li data-tab-target="#about" class="active tab">About</li>
+      <li data-tab-target="#portfolio" class="tab">Portfolio</li>
+      <li data-tab-target="#Hobbies" class="tab">Hobbies</li>
+      <li data-tab-target="#contact" class="tab">Contact</li>
     </ul>
+  </div>
+
+  <div class="tab-content">
+    <!-- About tab -->
+    <div id="about" data-tab-content class="active">
+      <div class="container">
+        <section class="about">
+          <div class="bio">
+            <h1>Hi there! Welcome to my humble website.</h1>
+            <p>👋 I'm Teddy, a data professional specializing in data management, engineering, and analytics. With hands-on experience in building data pipelines, crafting data architecture, and creating ETL workflows, I am passionate about transforming raw data into actionable insights.</p>
+            <h2>My technical skill set includes:</h2>
+            <ul>
+              <li><strong>Data Engineering:</strong> Creating efficient data pipelines, working with data architecture, and integrating systems.</li>
+              <li><strong>Data Warehousing:</strong> Expertise in Snowflake and DOMO.</li>
+              <li><strong>Data Analytics & Visualization:</strong> Proficient in using Tableau, DOMO, and machine learning techniques to turn complex data into clear, visual stories.</li>
+              <li><strong>Programming & Scripting:</strong> Skilled in SQL, Python, HTML, and JavaScript.</li>
+              <li><strong>Certifications:</strong> Alteryx Core Certification.</li>
+            </ul>
+            <p>I thrive in collaborative environments and enjoy solving complex problems through data. Whether it's optimizing workflows or diving deep into analytics, my goal is always to deliver clear, effective, and scalable solutions.</p>
+          </div>
+          <div class="profile">
+            <img src="images/profilepic.jpg" alt="Theodore Flattmann" class="profile-pic">
+          </div>
+        </section>
+      </div>
     </div>
 
-    <div class="tab-content">
-        <!-- About tab -->
-        <div id="about" data-tab-content class="active">
-            <div class="container">
-                <section class="about">
-                    <div class="bio">
-                        <h1>Hi there! Welcome to my humble website.</h1>
-                        <p>👋 I'm Teddy, a data professional specializing in data management, engineering, and analytics. With hands-on experience in building data pipelines, crafting data architecture, and creating ETL workflows, I am passionate about transforming raw data into actionable insights.</p>
-                        <h2>My technical skill set includes:</h2>
-                        <ul>
-                            <li><strong>Data Engineering:</strong> Creating efficient data pipelines, working with data architecture, and integrating systems.</li>
-                            <li><strong>Data Warehousing:</strong> Expertise in Snowflake and DOMO.</li>
-                            <li><strong>Data Analytics & Visualization:</strong> Proficient in using Tableau, DOMO, and machine learning techniques to turn complex data into clear, visual stories.</li>
-                            <li><strong>Programming & Scripting:</strong> Skilled in SQL, Python, HTML, and JavaScript.</li>
-                            <li><strong>Certifications:</strong> Alteryx Core Certification.</li>
-                        </ul>
-                        <p>I thrive in collaborative environments and enjoy solving complex problems through data. Whether it's optimizing workflows or diving deep into analytics, my goal is always to deliver clear, effective, and scalable solutions.</p>
-                        </div>    
-                    <div class="profile">
-                        <img src="images/profilepic.jpg" alt="Theodore Flattmann" class="profile-pic">
-                    </div>
-                </section>
-            </div>
+    <!-- Projects tab -->
+    <div id="portfolio" data-tab-content>
+      <div class="portfolio-list">
+        <div class="project-item">
+          <img src="images/project1-thumbnail.jpg" alt="Project 1 Thumbnail" class="project-thumbnail">
+          <div class="project-details">
+            <h2>National Parks Weather Explorer</h2>
+            <p>A web app pulling live weather data for U.S. National Parks using the NPS and Weather.gov APIs. Built with JavaScript, HTML, and SQLite for backend storage.</p>
+            <a href="projects/weather_map.html" class="project-link">View Project</a>
+          </div>
         </div>
+        <div class="project-item">
+          <img src="images/project2-thumbnail.jpg" alt="Project 2 Thumbnail" class="project-thumbnail">
+          <div class="project-details">
+            <h2>Project 2 Title Goes Here</h2>
+            <p>Description of project 2.</p>
+            <a href="projects/national-parks.html" class="project-link">View Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        <!-- Projects tab -->
-        <div id="portfolio" data-tab-content>
-            <div class="portfolio-list">
-                <div class="project-item">
-                    <img src="images/project1-thumbnail.jpg" alt="Project 1 Thumbnail" class="project-thumbnail">
-                    <div class="project-details">
-                        <h2>National Parks Weather Explorer</h2>
-                        <p>A web app pulling live weather data for U.S. National Parks using the NPS and Weather.gov APIs. Built with JavaScript, HTML, and SQLite for backend storage.</p>
-                        <a href="projects/weather_map.html" class="project-link">View Project</a>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/project2-thumbnail.jpg" alt="Project 2 Thumbnail" class="project-thumbnail">
-                    <div class="project-details">
-                        <h2>Project 2 Tiitle Goes Here</h2>
-                        <p>Descritpion of project 2.</p>
-                        <a href="projects/national-parks.html" class="project-link">View Project</a>
-                    </div>
-                </div> 
-            </div>
-    <!-- Add more projects here the same way -->
-
-
-        <!-- Hobbies tab -->
-        <div id="Hobbies" data-tab-content>
-            <div class="hobbies">
-            <h1>Backpacking & Photography</h1>
-            <p>Outside of work, I spend a fair amount of time outdoors. With the Sierra Nevada being a personal favorite. The trips offer a chance to disconnect, challenge myself with that rare type 2 fun, and appreciate some of the most prestine landscapes in California! Below you'll find my attempts to document these excursions through photography. A fun journey in itself as I learn more about the ins and outs of taking that perfect photo!</p>
-            </div>
-            <!-- Trip toggle buttons -->
-            <div class="trip-toggle">
-                <button class="trip-btn active" data-trip="dewey">Dewey Point (2025)</button>
-                <button class="trip-btn" data-trip="clark_range">Clark Range Loop (2024)</button>
-            </div>
-      <!-- Dewey Point Gallery -->
+    <!-- Hobbies tab -->
+    <div id="Hobbies" data-tab-content>
+      <div class="hobbies">
+        <h1>Backpacking & Photography</h1>
+        <p>Outside of work, I spend a fair amount of time outdoors, with the Sierra Nevada being a personal favorite. These trips offer a chance to disconnect, challenge myself with that rare type-2 fun, and appreciate some of the most pristine landscapes in California! Below you'll find my attempts to document these excursions through photography—a fun journey in itself as I learn the ins and outs of taking that perfect shot.</p>
+      </div>
+      <div class="trip-toggle">
+        <button class="trip-btn active" data-trip="dewey">Dewey Point (2025)</button>
+        <button class="trip-btn" data-trip="clark_range">Clark Range Loop (2024)</button>
+      </div>
       <div class="gallery-section" id="dewey">
-          <p class="highlight-paragraph">Trip Details: A 9 mile out-and-back trip beginning at tunnel view. This trip was a snowfilled one given a snow storm the night before.</p>        <div class="gallery">
-          <figure><img src="images/deweypoint/deweypoint.jpg" alt="Dewey Point" /><figcaption>Dewey Point</figcaption></figure>
-          <figure><img src="images/deweypoint/ridge.jpg" alt="Ridge" /><figcaption>Ridge</figcaption></figure>
-          <figure><img src="images/deweypoint/snowwell.jpg" alt="Snowwell" /><figcaption>Snowwell</figcaption></figure>
-          <figure><img src="images/deweypoint/valley.jpg" alt="Valley" /><figcaption>Valley</figcaption></figure>
-          <figure><img src="images/deweypoint/valley1.jpg" alt="Valley View" /><figcaption>Valley View</figcaption></figure>
+        <p class="highlight-paragraph">Trip Details: A 9-mile out-and-back trip beginning at Tunnel View. This one was snow-filled after an overnight storm.</p>
+        <div class="gallery">
+          <figure><img src="images/deweypoint/deweypoint.jpg" alt="Dewey Point"><figcaption>Dewey Point</figcaption></figure>
+          <figure><img src="images/deweypoint/ridge.jpg" alt="Ridge"><figcaption>Ridge</figcaption></figure>
+          <figure><img src="images/deweypoint/snowwell.jpg" alt="Snowwell"><figcaption>Snowwell</figcaption></figure>
+          <figure><img src="images/deweypoint/valley.jpg" alt="Valley"><figcaption>Valley</figcaption></figure>
+          <figure><img src="images/deweypoint/valley1.jpg" alt="Valley View"><figcaption>Valley View</figcaption></figure>
         </div>
-        </div>
-
-      <!-- Clark Range Gallery -->
+      </div>
       <div class="gallery-section" id="clark_range" style="display: none;">
-          <p class="highlight-paragraph">Trip Details: A tough one! 50 mile loop beginning and ending at Mono Meadow trailhead, crossing the highest class 1 point in yosemite, red peak pass! 
-            Completed in september the heavy snows were all but gone, along with most of the higher water levels. A blessing given the multiple waist deep stream crossings.</p>        
-          <div class="gallery">
-          <figure><img src="images/clark_range/clark_range.jpg" alt="Clark Range" /><figcaption>Clark Range</figcaption></figure>
-          <figure><img src="images/clark_range/half_dome.jpg" alt="Half Dome" /><figcaption>Half Dome</figcaption></figure>
-          <figure><img src="images/clark_range/little_yosemite_valley.jpg" alt="Little Yosemite Valley" /><figcaption>Little Yosemite Valley</figcaption></figure>
-          <figure><img src="images/clark_range/little_yosemite_valley_1.jpg" alt="Little Yosemite Valley 1" /><figcaption>Little Yosemite Valley 1</figcaption></figure>
-          <figure><img src="images/clark_range/little_yosemite_valley_2.jpg" alt="Little Yosemite Valley 2" /><figcaption>Little Yosemite Valley 2</figcaption></figure>
-          <figure><img src="images/clark_range/little_yosemite_valley_3.jpg" alt="Little Yosemite Valley 3" /><figcaption>Little Yosemite Valley 3</figcaption></figure>
-          <figure><img src="images/clark_range/mono_meadow.jpg" alt="Mono Meadow" /><figcaption>Mono Meadow</figcaption></figure>
+        <p class="highlight-paragraph">Trip Details: A tough 50-mile loop from Mono Meadow, crossing Red Peak Pass—Yosemite’s highest class-1 point.</p>
+        <div class="gallery">
+          <figure><img src="images/clark_range/clark_range.jpg" alt="Clark Range"><figcaption>Clark Range</figcaption></figure>
+          <figure><img src="images/clark_range/half_dome.jpg" alt="Half Dome"><figcaption>Half Dome</figcaption></figure>
+          <!-- more figures… -->
         </div>
-        </div>
+      </div>
     </div>
 
     <!-- Contact info tab -->
     <div id="contact" data-tab-content>
-        <div class ="bio">
+      <div class="bio">
         <p>Email: teddyflattmann@gmail.com</p>
         <p>LinkedIn: <a href="https://www.linkedin.com/in/theodore-flattmann-70b774180/" target="_blank">theodore-flattmann</a></p>
-        </div
+      </div>
     </div>
-  </div>  <!-- this marks the close of the tab content div -->
-    <!-- Image Modal -->
-    <div id="imageModal" class="modal">
-        <span class="close-modal">&times;</span>
-        <img class="modal-content" id="modalImg">
-        <div id="modalCaption" class="caption"></div>
-    </div>
+  </div> <!-- /.tab-content -->
 
-
-    
-</body>   
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div id="modalCaption" class="caption"></div>
+  </div>
+</body>
 </html>
+
