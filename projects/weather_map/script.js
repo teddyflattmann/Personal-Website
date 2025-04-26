@@ -1,27 +1,48 @@
+// script.js
 window.addEventListener('DOMContentLoaded', () => {
-  
   // 1) Show Last-Modified for parks_data.json
   fetch('../../parks_data.json', { method: 'HEAD' })
     .then(res => {
       const lm = res.headers.get('last-modified');
-      if (!lm) return;  // if there's no header, bail out
+      if (!lm) return;  // if no header, bail out
       const when = new Date(lm).toLocaleString('en-US', {
-        dateStyle:    'short',
-        timeStyle:    'medium',
+        dateStyle: 'short',
+        timeStyle: 'medium',
         timeZoneName: 'short'
       });
       document.getElementById('last-updated-time').textContent =
         `Data last updated: ${when}`;
     })
     .catch(() => {/* ignore errors */});
-  
+
   // 2) Initialize the map centered on the U.S.
   const map = L.map('map').setView([39.5, -98.35], 4);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
 
-  // 3) Fetch your JSON from the site root
+  // 2a) Base OpenStreetMap layer
+  const osmLayer = L.tileLayer(
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    { attribution: '&copy; OpenStreetMap contributors' }
+  ).addTo(map);
+
+  // 2b) Elevation contours overlay
+  const contourLayer = L.tileLayer(
+    'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+    {
+      maxZoom: 17,
+      attribution:
+        'Map data: &copy; OpenStreetMap contributors, SRTM | Contours: &copy; OpenTopoMap'
+    }
+  );
+  // Uncomment the next line to enable contours by default
+  // contourLayer.addTo(map);
+
+  // 2c) Layer control for base maps and overlays
+  L.control.layers(
+    { 'OSM Standard': osmLayer },
+    { 'Elevation Contours': contourLayer }
+  ).addTo(map);
+
+  // 3) Fetch your JSON from the site root and add markers
   fetch('../../parks_data.json')
     .then(res => {
       if (!res.ok) throw new Error('Failed to load parks_data.json');
@@ -60,8 +81,6 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   // 5) Wire up filter inputs
-  document.getElementById('nameFilter')
-    .addEventListener('input', applyFilters);
-  document.getElementById('forecastFilter')
-    .addEventListener('input', applyFilters);
+  document.getElementById('nameFilter').addEventListener('input', applyFilters);
+  document.getElementById('forecastFilter').addEventListener('input', applyFilters);
 });
