@@ -1,0 +1,19 @@
+/* Make the map visible */
+#map {
+  height: 80vh;
+  width: 100%;
+}
+
+/* Filter bar styling */
+.filters {
+  padding: 0.5rem;
+  background: #f7f7f7;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.filters input {
+  padding: 0.3rem;
+  font-size: 1rem;
+}
