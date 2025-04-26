@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }).addTo(map);
 
   // 2) Fetch your JSON from the site root
-  fetch('/parks_data.json')
+  fetch('../../parks_data.json')
     .then(res => {
       if (!res.ok) throw new Error('Failed to load parks_data.json');
       return res.json();
