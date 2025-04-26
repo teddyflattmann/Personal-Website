@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function openModal(src, alt) {
-        modal.style.display = 'block';
+        modal.style.display = 'flex';
         modalImg.src = src;
         caption.textContent = alt;
     }
