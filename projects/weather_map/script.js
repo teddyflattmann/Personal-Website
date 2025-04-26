@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
+  
   // 1) Show Last-Modified for parks_data.json
   fetch('../../parks_data.json', { method: 'HEAD' })
     .then(res => {
