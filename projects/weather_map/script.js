@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
     .catch(() => {/* ignore errors */});
 
   // 2) Initialize the map centered on the U.S.
-  const map = L.map('map').setView([39.5, -98.35], 4);
+  const map = L.map('map').setView([36.8, -119.4], 6);
 
   // 2a) Base OpenStreetMap layer
   const osmLayer = L.tileLayer(
