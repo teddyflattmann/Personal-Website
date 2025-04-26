@@ -1,11 +1,26 @@
 window.addEventListener('DOMContentLoaded', () => {
-  // 1) Initialize the map centered on the U.S.
+  // 1) Show Last-Modified for parks_data.json
+  fetch('../../parks_data.json', { method: 'HEAD' })
+    .then(res => {
+      const lm = res.headers.get('last-modified');
+      if (lm) {
+        document.getElementById('last-updated').textContent =
+          `Data last updated: ${new Date(lm).toLocaleString()}`;
+      } else {
+        document.getElementById('last-updated').textContent = '';
+      }
+    })
+    .catch(() => {
+      document.getElementById('last-updated').textContent = '';
+    });
+
+  // 2) Initialize the map centered on the U.S.
   const map = L.map('map').setView([39.5, -98.35], 4);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
 
-  // 2) Fetch your JSON from the site root
+  // 3) Fetch your JSON from the site root
   fetch('../../parks_data.json')
     .then(res => {
       if (!res.ok) throw new Error('Failed to load parks_data.json');
@@ -26,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
     })
     .catch(err => console.error(err));
 
-  // 3) Filtering logic
+  // 4) Filtering logic
   function applyFilters() {
     const nameTerm     = document.getElementById('nameFilter').value.toLowerCase();
     const forecastTerm = document.getElementById('forecastFilter').value.toLowerCase();
@@ -43,7 +58,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4) Wire up filter inputs
+  // 5) Wire up filter inputs
   document.getElementById('nameFilter')
     .addEventListener('input', applyFilters);
   document.getElementById('forecastFilter')
