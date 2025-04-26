@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
   setupFilters();
 
   // 3) Fetch data + timestamp + plot markers
-  fetch('../../parks_data.json')   // ← two levels up from projects/weather_map/&#8203;:contentReference[oaicite:0]{index=0}&#8203;:contentReference[oaicite:1]{index=1}
+  fetch('/Personal-Website/parks_data.json')   // ← two levels up from projects/weather_map/&#8203;:contentReference[oaicite:0]{index=0}&#8203;:contentReference[oaicite:1]{index=1}
     .then(res => {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       
