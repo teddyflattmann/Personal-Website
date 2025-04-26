@@ -360,6 +360,25 @@ font-size: 1rem;
     background-color: #1e293b;
 }
 
+/* Make sure your map container actually shows up */
+#map {
+  height: 80vh;            /* or whatever makes sense for your layout */
+  width: 100%;             /* full-width map */
+}
+
+/* Style your filter bar (optional—you can tweak colors, spacing, etc.) */
+.filters {
+  padding: 0.5rem;
+  background: #f7f7f7;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.filters input {
+  padding: 0.3rem;
+  font-size: 1rem;
+}
 
 
 
