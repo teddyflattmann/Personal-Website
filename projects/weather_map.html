@@ -1,15 +1,97 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>National Parks Weather Explorer</title>
-    <link href="../styles.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>National Parks Weather Explorer</title>
+
+  <!-- Leaflet CSS & JS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <style>
+    body { margin:0; font-family:sans-serif; }
+    #map { height: 80vh; }
+    .filters {
+      padding: 0.5rem;
+      background: #f7f7f7;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .filters input {
+      padding: 0.3rem;
+      font-size: 1rem;
+    }
+  </style>
 </head>
 <body>
-    <div class="tab-content">
-        <h1>National Parks Weather Explorer</h1>
-        <p>Detailed description about your National Parks Weather Explorer project...</p>
-        <p><a href="../index.html#portfolio">← Back to Portfolio</a></p>
-    </div>
+
+  <div class="filters">
+    <label>
+      Name contains:
+      <input id="nameFilter" type="text" placeholder="e.g. National Park">
+    </label>
+    <label>
+      Forecast contains:
+      <input id="forecastFilter" type="text" placeholder="e.g. snow">
+    </label>
+  </div>
+
+  <div id="map"></div>
+
+  <script>
+    // 1) Initialize map centered on U.S.
+    const map = L.map('map').setView([39.5, -98.35], 4);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // 2) Load your JSON (ensure parks_data.json is in same folder)
+    fetch('../'parks_data.json')
+      .then(res => res.json())
+      .then(data => {
+        window.allMarkers = data.map(item => {
+          // create marker
+          const marker = L.marker([item.latitude, item.longitude])
+            .bindPopup(`
+              <strong>${item.name}</strong><br>
+              ${item.temperature || ''}<br>
+              ${item.wind    || ''}<br>
+              ${item.forecast || ''}
+            `)
+            .addTo(map);
+          return { marker, data: item };
+        });
+      });
+
+    // 3) Filtering function
+    function applyFilters() {
+      const nameTerm     = document.getElementById('nameFilter').value.toLowerCase();
+      const forecastTerm = document.getElementById('forecastFilter').value.toLowerCase();
+
+      window.allMarkers.forEach(({ marker, data }) => {
+        const matchName     = data.name.toLowerCase().includes(nameTerm);
+        const matchForecast = !forecastTerm 
+                              || (data.forecast && data.forecast.toLowerCase().includes(forecastTerm));
+
+        if (matchName && matchForecast) {
+          marker.addTo(map);
+        } else {
+          map.removeLayer(marker);
+        }
+      });
+    }
+
+    // 4) Wire up the inputs
+    document.getElementById('nameFilter')
+      .addEventListener('input', applyFilters);
+    document.getElementById('forecastFilter')
+      .addEventListener('input', applyFilters);
+  </script>
+
 </body>
 </html>
+
