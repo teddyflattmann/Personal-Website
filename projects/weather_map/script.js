@@ -1,86 +1,122 @@
 // script.js
-window.addEventListener('DOMContentLoaded', () => {
-  // 1) Show Last-Modified for parks_data.json
-  fetch('../../parks_data.json', { method: 'HEAD' })
-    .then(res => {
-      const lm = res.headers.get('last-modified');
-      if (!lm) return;  // if no header, bail out
-      const when = new Date(lm).toLocaleString('en-US', {
-        dateStyle: 'short',
-        timeStyle: 'medium',
-        timeZoneName: 'short'
-      });
-      document.getElementById('last-updated-time').textContent =
-        `Data last updated: ${when}`;
+
+window.addEventListener('DOMContentLoaded', init);
+
+function init() {
+  // Kick things off: load data (and timestamp), then build the map
+  fetchDataAndTimestamp()
+    .then(parks => {
+      const map = createMap();
+      addBaseLayers(map);
+      plotParks(map, parks);
+      setupFilters(map);
     })
-    .catch(() => {/* ignore errors */});
+    .catch(err => {
+      console.error('🔥 Oops! Something went wrong:', err);
+      const stampEl = document.getElementById('last-updated-time');
+      if (stampEl) stampEl.textContent = 'Unable to load data.';
+    });
+}
 
-  // 2) Initialize the map centered on the U.S.
-  const map = L.map('map').setView([36.8, -119.4], 6);
+/**
+ * Fetches parks_data.json via GET so we can read Last-Modified,
+ * then returns parsed JSON.
+ */
+function fetchDataAndTimestamp() {
+  const url = '../../parks_data.json';
+  return fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status} – ${response.statusText}`);
+      }
 
-  // 2a) Base OpenStreetMap layer
-  const osmLayer = L.tileLayer(
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    { attribution: '&copy; OpenStreetMap contributors' }
-  ).addTo(map);
+      // Stamp it
+      const lm = response.headers.get('last-modified');
+      if (lm) {
+        const formatted = new Date(lm).toLocaleString('en-US', {
+          dateStyle: 'short',
+          timeStyle: 'medium',
+          timeZoneName: 'short'
+        });
+        document.getElementById('last-updated-time').textContent =
+          `Data last updated: ${formatted}`;
+      } else {
+        console.warn('No Last-Modified header found.');
+      }
 
-  // 2b) Elevation contours overlay
-  const contourLayer = L.tileLayer(
-    'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
-    {
-      maxZoom: 17,
-      attribution:
-        'Map data: &copy; OpenStreetMap contributors, SRTM | Contours: &copy; OpenTopoMap'
-    }
-  );
-  // Uncomment the next line to enable contours by default
-  // contourLayer.addTo(map);
+      // Hand off the JSON
+      return response.json();
+    });
+}
 
-  // 2c) Layer control for base maps and overlays
+/** Creates the Leaflet map centered on CA and returns it. */
+function createMap() {
+  const centerLatLng = [36.8, -119.4];
+  const zoomLevel    = 6;
+  const map = L.map('map').setView(centerLatLng, zoomLevel);
+
+  console.log(`Map initialized at ${centerLatLng} @ zoom ${zoomLevel}`);
+  return map;
+}
+
+/** Adds OSM and contour layers (contours off by default). */
+function addBaseLayers(map) {
+  const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  const contours = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+    maxZoom: 17,
+    attribution: 'Map data: &copy; OSM, SRTM | Contours: &copy; OpenTopoMap'
+  });
+
   L.control.layers(
-    { 'OSM Standard': osmLayer },
-    { 'Elevation Contours': contourLayer }
+    { 'OSM Standard': osm },
+    { 'Elevation Contours': contours }
   ).addTo(map);
+}
 
-  // 3) Fetch your JSON from the site root and add markers
-  fetch('../../parks_data.json')
-    .then(res => {
-      if (!res.ok) throw new Error('Failed to load parks_data.json');
-      return res.json();
-    })
-    .then(data => {
-      window.allMarkers = data.map(item => {
-        const marker = L.marker([item.latitude, item.longitude])
-          .bindPopup(`
-            <strong>${item.name}</strong><br>
-            ${item.temperature || ''}<br>
-            ${item.wind        || ''}<br>
-            ${item.forecast    || ''}
-          `)
-          .addTo(map);
-        return { marker, data: item };
-      });
-    })
-    .catch(err => console.error(err));
+/** Drops a marker for each park, storing them globally for filtering. */
+function plotParks(map, parks) {
+  window.allMarkers = parks.map(park => {
+    const { latitude, longitude, name, temperature, wind, forecast } = park;
+    const popupHtml = `
+      <strong>${name}</strong><br>
+      ${temperature || ''}<br>
+      ${wind        || ''}<br>
+      ${forecast    || ''}
+    `.trim();
 
-  // 4) Filtering logic
-  function applyFilters() {
-    const nameTerm     = document.getElementById('nameFilter').value.toLowerCase();
-    const forecastTerm = document.getElementById('forecastFilter').value.toLowerCase();
+    const marker = L.marker([latitude, longitude])
+      .bindPopup(popupHtml)
+      .addTo(map);
+
+    return { marker, data: park };
+  });
+
+  console.log(`Plotted ${parks.length} park markers.`);
+}
+
+/** Wire up the two text inputs to filter markers on the fly. */
+function setupFilters(map) {
+  const nameInput     = document.getElementById('nameFilter');
+  const forecastInput = document.getElementById('forecastFilter');
+
+  const apply = () => {
+    const nameTerm     = nameInput.value.toLowerCase();
+    const forecastTerm = forecastInput.value.toLowerCase();
 
     window.allMarkers.forEach(({ marker, data }) => {
-      const okName     = data.name.toLowerCase().includes(nameTerm);
-      const okForecast = !forecastTerm ||
+      const nameOK     = data.name.toLowerCase().includes(nameTerm);
+      const forecastOK = !forecastTerm ||
                          (data.forecast && data.forecast.toLowerCase().includes(forecastTerm));
-      if (okName && okForecast) {
-        marker.addTo(map);
-      } else {
-        map.removeLayer(marker);
-      }
-    });
-  }
 
-  // 5) Wire up filter inputs
-  document.getElementById('nameFilter').addEventListener('input', applyFilters);
-  document.getElementById('forecastFilter').addEventListener('input', applyFilters);
-});
+      if (nameOK && forecastOK) marker.addTo(map);
+      else                       map.removeLayer(marker);
+    });
+  };
+
+  nameInput.addEventListener('input', apply);
+  forecastInput.addEventListener('input', apply);
+}
+
