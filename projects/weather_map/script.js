@@ -12,7 +12,7 @@ function init() {
       setupFilters(map);
     })
     .catch(err => {
-      console.error('🔥 Oops! Something went wrong:', err);
+      console.error('Something went wrong:', err);
       const stampEl = document.getElementById('last-updated-time');
       if (stampEl) stampEl.textContent = 'Unable to load data.';
     });
