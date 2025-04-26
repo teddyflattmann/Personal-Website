@@ -22,46 +22,43 @@ window.addEventListener('DOMContentLoaded', () => {
   setupFilters();
 
   // 3) Fetch data + timestamp + plot markers
-  fetch('../../parks_data.json')   // ← two levels up from projects/weather_map/&#8203;:contentReference[oaicite:0]{index=0}&#8203;:contentReference[oaicite:1]{index=1}
-    .then(res => {
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      
-      // stamp
-      const lm = res.headers.get('last-modified');
-      if (lm) {
-        const when = new Date(lm).toLocaleString('en-US', {
-          dateStyle: 'short',
-          timeStyle: 'medium',
-          timeZoneName: 'short'
-        });
-        document.getElementById('last-updated-time').textContent =
-          `Data last updated: ${when}`;
-      } else {
-        console.warn('No Last-Modified header found.');
-      }
-      
-      return res.json();
-    })
-    .then(data => {
-      // plot
-      data.forEach(item => {
-        const marker = L.marker([item.latitude, item.longitude])
-          .bindPopup(`
-            <strong>${item.name}</strong><br>
-            ${item.temperature || ''}<br>
-            ${item.wind        || ''}<br>
-            ${item.forecast    || ''}
-          `)
-          .addTo(map);
-        window.allMarkers.push({ marker, data: item });
-      });
-    })
-    .catch(err => {
-      console.error('Error loading parks:', err);
+fetch('../../parks_data.json')
+  .then(res => {
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    // grab the Last-Modified header
+    const lm = res.headers.get('last-modified');
+    if (lm) {
+      // simple formatting only—no options object
+      const when = new Date(lm).toLocaleString();
       document.getElementById('last-updated-time').textContent =
-        'Unable to load data.';
+        `Data last updated: ${when}`;
+    } else {
+      console.warn('No Last-Modified header found.');
+    }
+
+    // now parse and plot
+    return res.json();
+  })
+  .then(data => {
+    data.forEach(item => {
+      const marker = L.marker([item.latitude, item.longitude])
+        .bindPopup(`
+          <strong>${item.name}</strong><br>
+          ${item.temperature || ''}<br>
+          ${item.wind        || ''}<br>
+          ${item.forecast    || ''}
+        `)
+        .addTo(map);
+      window.allMarkers.push({ marker, data: item });
     });
-});
+  })
+  .catch(err => {
+    console.error('Error loading parks:', err);
+    document.getElementById('last-updated-time').textContent =
+      'Unable to load data.';
+  });
+
 
 /** Wires up the two filter inputs to show/hide markers */
 function setupFilters() {
