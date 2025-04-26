@@ -3,11 +3,11 @@ window.addEventListener('DOMContentLoaded', () => {
   fetch('../../parks_data.json', { method: 'HEAD' })
     .then(res => {
       const lm = res.headers.get('last-modified');
-      if ($lm) return;
+      if (!lm) return;
       const when =new Date(lm)
                   .toLocaleString('en-US',{
                     dateStyle: 'short',
-                    timesStyle: 'medium',
+                    timeStyle: 'medium',
                     timeZoneName: 'short'
                   });
         document.getElementById('last-updated').textContent =
