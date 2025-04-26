@@ -3,18 +3,17 @@ window.addEventListener('DOMContentLoaded', () => {
   fetch('../../parks_data.json', { method: 'HEAD' })
     .then(res => {
       const lm = res.headers.get('last-modified');
-      if (!lm) return;
-      const when =new Date(lm)
-                  .toLocaleString('en-US',{
-                    dateStyle: 'short',
-                    timeStyle: 'medium',
-                    timeZoneName: 'short'
-                  });
-        document.getElementById('last-updated').textContent =
-          `Data last updated: ${when}`;
-      })
-      .catch(() => {/* ignore errors */});
-
+      if (!lm) return;  // if there's no header, bail out
+      const when = new Date(lm).toLocaleString('en-US', {
+        dateStyle:    'short',
+        timeStyle:    'medium',
+        timeZoneName: 'short'
+      });
+      document.getElementById('last-updated-time').textContent =
+        `Data last updated: ${when}`;
+    })
+    .catch(() => {/* ignore errors */});
+  
   // 2) Initialize the map centered on the U.S.
   const map = L.map('map').setView([39.5, -98.35], 4);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
