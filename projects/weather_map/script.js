@@ -1,104 +1,70 @@
 // script.js
+window.addEventListener('DOMContentLoaded', () => {
+  // 1) Initialize the map & layers immediately
+  const map = L.map('map').setView([36.8, -119.4], 6);
+  
+  const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+  
+  const contours = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+    maxZoom: 17,
+    attribution: 'Map data: &copy; OSM, SRTM | Contours: &copy; OpenTopoMap'
+  });
+  
+  L.control.layers(
+    { 'OSM Standard': osm },
+    { 'Elevation Contours': contours }
+  ).addTo(map);
+  
+  // 2) Prepare filtering (markers will be added later)
+  window.allMarkers = [];
+  setupFilters();
 
-window.addEventListener('DOMContentLoaded', init);
-
-function init() {
-  // Kick things off: load data (and timestamp), then build the map
-  fetchDataAndTimestamp()
-    .then(parks => {
-      const map = createMap();
-      addBaseLayers(map);
-      plotParks(map, parks);
-      setupFilters(map);
-    })
-    .catch(err => {
-      console.error('Something went wrong:', err);
-      const stampEl = document.getElementById('last-updated-time');
-      if (stampEl) stampEl.textContent = 'Unable to load data.';
-    });
-}
-
-/**
- * Fetches parks_data.json via GET so we can read Last-Modified,
- * then returns parsed JSON.
- */
-function fetchDataAndTimestamp() {
-  const url = '../../parks_data.json';
-  return fetch(url)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status} – ${response.statusText}`);
-      }
-
-      // Stamp it
-      const lm = response.headers.get('last-modified');
+  // 3) Fetch data + timestamp + plot markers
+  fetch('../../parks_data.json')   // ← two levels up from projects/weather_map/&#8203;:contentReference[oaicite:0]{index=0}&#8203;:contentReference[oaicite:1]{index=1}
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      
+      // stamp
+      const lm = res.headers.get('last-modified');
       if (lm) {
-        const formatted = new Date(lm).toLocaleString('en-US', {
+        const when = new Date(lm).toLocaleString('en-US', {
           dateStyle: 'short',
           timeStyle: 'medium',
           timeZoneName: 'short'
         });
         document.getElementById('last-updated-time').textContent =
-          `Data last updated: ${formatted}`;
+          `Data last updated: ${when}`;
       } else {
         console.warn('No Last-Modified header found.');
       }
-
-      // Hand off the JSON
-      return response.json();
+      
+      return res.json();
+    })
+    .then(data => {
+      // plot
+      data.forEach(item => {
+        const marker = L.marker([item.latitude, item.longitude])
+          .bindPopup(`
+            <strong>${item.name}</strong><br>
+            ${item.temperature || ''}<br>
+            ${item.wind        || ''}<br>
+            ${item.forecast    || ''}
+          `)
+          .addTo(map);
+        window.allMarkers.push({ marker, data: item });
+      });
+    })
+    .catch(err => {
+      console.error('Error loading parks:', err);
+      document.getElementById('last-updated-time').textContent =
+        'Unable to load data.';
     });
-}
+});
 
-/** Creates the Leaflet map centered on CA and returns it. */
-function createMap() {
-  const centerLatLng = [36.8, -119.4];
-  const zoomLevel    = 6;
-  const map = L.map('map').setView(centerLatLng, zoomLevel);
-
-  console.log(`Map initialized at ${centerLatLng} @ zoom ${zoomLevel}`);
-  return map;
-}
-
-/** Adds OSM and contour layers (contours off by default). */
-function addBaseLayers(map) {
-  const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-
-  const contours = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-    maxZoom: 17,
-    attribution: 'Map data: &copy; OSM, SRTM | Contours: &copy; OpenTopoMap'
-  });
-
-  L.control.layers(
-    { 'OSM Standard': osm },
-    { 'Elevation Contours': contours }
-  ).addTo(map);
-}
-
-/** Drops a marker for each park, storing them globally for filtering. */
-function plotParks(map, parks) {
-  window.allMarkers = parks.map(park => {
-    const { latitude, longitude, name, temperature, wind, forecast } = park;
-    const popupHtml = `
-      <strong>${name}</strong><br>
-      ${temperature || ''}<br>
-      ${wind        || ''}<br>
-      ${forecast    || ''}
-    `.trim();
-
-    const marker = L.marker([latitude, longitude])
-      .bindPopup(popupHtml)
-      .addTo(map);
-
-    return { marker, data: park };
-  });
-
-  console.log(`Plotted ${parks.length} park markers.`);
-}
-
-/** Wire up the two text inputs to filter markers on the fly. */
-function setupFilters(map) {
+/** Wires up the two filter inputs to show/hide markers */
+function setupFilters() {
   const nameInput     = document.getElementById('nameFilter');
   const forecastInput = document.getElementById('forecastFilter');
 
@@ -107,16 +73,16 @@ function setupFilters(map) {
     const forecastTerm = forecastInput.value.toLowerCase();
 
     window.allMarkers.forEach(({ marker, data }) => {
-      const nameOK     = data.name.toLowerCase().includes(nameTerm);
-      const forecastOK = !forecastTerm ||
+      const okName     = data.name.toLowerCase().includes(nameTerm);
+      const okForecast = !forecastTerm ||
                          (data.forecast && data.forecast.toLowerCase().includes(forecastTerm));
-
-      if (nameOK && forecastOK) marker.addTo(map);
-      else                       map.removeLayer(marker);
+      if (okName && okForecast) marker.addTo(marker._map);
+      else                       marker.remove();
     });
   };
 
   nameInput.addEventListener('input', apply);
   forecastInput.addEventListener('input', apply);
 }
+
 
