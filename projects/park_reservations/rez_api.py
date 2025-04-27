@@ -11,7 +11,7 @@ base_url= "https://ridb.recreation.gov/api/v1/reservations"
 headers= {"apikey": api_key}
 
 #parameters
-parameters= {"facilityId": 232446, "limit": 1000, "offset":0}
+parameters= {"agencyID": 128, "ContractCode": "NRSO", "facilityId": 232446, "limit": 1000, "offset":0}
 
 #pagination_loop
 while True:
