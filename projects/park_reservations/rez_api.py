@@ -16,7 +16,8 @@ parameters = {
     "StartDate": "2023-01-01",
     "EndDate": "2025-04-27",
     "limit": 1000,
-    "offset": 0
+    "offset": 0,
+    "apikey": api_key
 }
 
 #pagination_loop
