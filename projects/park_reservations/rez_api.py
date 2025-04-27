@@ -8,7 +8,7 @@ from git import Repo
 #config
 api_key= "aaa34f3c-a9bc-4d59-8408-165b76ab114f"
 base_url= "https://ridb.recreation.gov/api/v1/reservations"
-headers= {"apikey", api_key}
+headers= {"apikey": api_key}
 
 #start_date & end_date
 start_date = date.today().isoformat()
