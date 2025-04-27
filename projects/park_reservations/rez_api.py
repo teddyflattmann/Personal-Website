@@ -15,7 +15,7 @@ start_date = "2023-01-01"
 end_date= date.today().isoformat()
 
 #parameters
-parameters= {"limit": 1000, "offset":0, "dateOfPurchaseStart": start_date, "dateOfPurchaseEnd": end_date}
+parameters= {"facilityId": 232446, "limit": 1000, "offset":0, "dateOfPurchaseStart": start_date, "dateOfPurchaseEnd": end_date}
 
 #pagination_loop
 while True:
@@ -26,7 +26,7 @@ while True:
   response.raise_for_status()
 
   #turn_json_into_python_object
-  rez_data = response.json().get("rez_data",[])
+  rez_data = response.json().get("RECDATA",[])
 
   #terminate_if_no_more_records
   if not rez_data: break
@@ -35,4 +35,4 @@ while True:
   all_records.extend(rez_data)
 
   #continue_advancing_through_all_pages
-  PARAMS["offset"] += PARAMS["limit"]
+  parameters["offset"] += parameters["limit"]
