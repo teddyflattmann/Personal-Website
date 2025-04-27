@@ -24,13 +24,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests gitpython
 
-      - name: Run weather_api.py
-        run: python weather_api.py
+      - name: Run rez_api.py
+        run: python rez_api.py
 
-      - name: Commit parks_data.json to repo
+      - name: Commit rez_data.json to repo
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add parks_data.json
-          git commit -m "Update parks_data.json [CI]" || echo "No changes to commit"
+          git add rez_data.json
+          git commit -m "Update rez_data.json [CI]" || echo "No changes to commit"
           git push
