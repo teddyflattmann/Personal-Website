@@ -26,7 +26,7 @@ response.raise_for_status()
 rez_data = response.json().get("rez_data",[])
 
 #stop_if_no_data
-if not data: break
+if not rez_data: break
 
 #append_data_to_master_list
 all_records.extend(rez_data)
