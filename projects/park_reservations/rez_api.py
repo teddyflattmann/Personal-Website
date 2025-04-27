@@ -1,1 +1,31 @@
+#imports
+import requests
+import json
+import os
+from git import Repo
+
+#config
+api_key= "aaa34f3c-a9bc-4d59-8408-165b76ab114f"
+base_url= "https://ridb.recreation.gov/api/v1/reservations"
+headers= {"apikey", api_key}
+parameters= {"limit": 1000, "offset":0}
+
+#send_request_get_response
+response = requests.get(base_url, headers=headers, params=parameters)
+
+#error_check
+response.raise_for_status()
+
+#turn_json_into_python_object
+rez_data = response.json().get("rez_data",[])
+
+#stop_if_no_data
+if not data: break
+
+#append_data_to_master_list
+all_records.extend(rez_data)
+
+#continue_advancing_through_all_pages
+PARAMS["offset"] += PARAMS["limit"]
+
 
