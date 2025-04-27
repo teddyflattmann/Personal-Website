@@ -11,7 +11,7 @@ headers= {"apikey", api_key}
 
 #start_date & end_date
 start_date = date.today().isoformat()
-end_date = '2023-01-01"
+end_date = "2023-01-01"
 
 #parameters
 parameters= {"limit": 1000, "offset":0, "dateOfPurchaseStart": start_date, "dateOfPurchaseEnd": end_date}
