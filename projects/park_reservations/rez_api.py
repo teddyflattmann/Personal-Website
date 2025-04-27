@@ -10,10 +10,6 @@ api_key= "aaa34f3c-a9bc-4d59-8408-165b76ab114f"
 base_url= "https://ridb.recreation.gov/api/v1/reservations"
 headers= {"apikey": api_key}
 
-#start_date & end_date
-start_date = "2023-01-01"
-end_date= date.today().isoformat()
-
 #parameters
 parameters= {"facilityId": 232446, "limit": 1000, "offset":0, "dateOfPurchaseStart": start_date, "dateOfPurchaseEnd": end_date}
 
