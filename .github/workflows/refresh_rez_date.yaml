@@ -25,7 +25,7 @@ jobs:
           pip install requests gitpython
 
       - name: Run rez_api.py
-        run: python rez_api.py
+        run: python projects/park_reservations/rez_api.py
 
       - name: Commit rez_data.json to repo
         run: |
