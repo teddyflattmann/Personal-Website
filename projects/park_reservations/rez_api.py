@@ -1,4 +1,5 @@
 #imports
+from datetime import date
 import requests
 import json
 import os
