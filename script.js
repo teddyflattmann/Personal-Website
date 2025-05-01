@@ -68,7 +68,7 @@ function init() {
 
 // fire on first load
 window.addEventListener('DOMContentLoaded', init);
-// …and also whenever the page is restored from bfcache
+// …and also whenever the page is restored from back forward cache
 window.addEventListener('pageshow', event => {
   if (event.persisted) {
     init();
