@@ -1,6 +1,6 @@
 // script.js
 function init() {
-  // --- Tab Switching Logic ---
+  // Tab Switching Logic
   const tabs = document.querySelectorAll('[data-tab-target]');
   const tabContents = document.querySelectorAll('[data-tab-content]');
 
@@ -20,7 +20,7 @@ function init() {
     });
   });
 
-  // --- Trip Buttons Toggle ---
+  // Trip Buttons Toggle
   const tripButtons = document.querySelectorAll('#Hobbies .trip-btn');
   const tripSections = document.querySelectorAll('#Hobbies .gallery-section');
 
@@ -38,7 +38,7 @@ function init() {
     });
   });
 
-  // --- Image Modal ---
+  // Image Modal
   const images = document.querySelectorAll('#Hobbies .gallery img');
   const modal = document.getElementById('imageModal');
   const modalImg = document.getElementById('modalImg');
@@ -60,13 +60,13 @@ function init() {
   });
 
   function openModal(src, alt) {
-    modal.style.display = 'flex';        // use flex so your justify/align-centering works
+    modal.style.display = 'flex';        
     modalImg.src = src;
     caption.textContent = alt;
   }
 }
 
-// fire on first load…
+// fire on first load
 window.addEventListener('DOMContentLoaded', init);
 // …and also whenever the page is restored from bfcache
 window.addEventListener('pageshow', event => {
