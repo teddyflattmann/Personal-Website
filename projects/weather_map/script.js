@@ -4,7 +4,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // 1) Initialize the map & layers
   const map = L.map('map').setView([36.8, -119.4], 6);
-
+  window._leafletMap = map; // Store reference globally
+  
   const osm = L.tileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     { attribution: '&copy; OpenStreetMap contributors' }
@@ -77,7 +78,7 @@ function setupFilters() {
       const okName     = data.name.toLowerCase().includes(nameTerm);
       const okForecast = !forecastTerm ||
                          (data.forecast && data.forecast.toLowerCase().includes(forecastTerm));
-      if (okName && okForecast) marker.addTo(marker._map);
+      if (okName && okForecast) marker.addTo(window._leafletMap);
       else                       marker.remove();
     });
   };
