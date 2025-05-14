@@ -184,7 +184,8 @@ body {
 
 .bio {
     max-width: 600px;
-}
+    margin-bottom: 1.2em;  /* adds space between paragraphs */
+    line-height: 1.6;  }
 
 .profile {
     flex-shrink: 0;
