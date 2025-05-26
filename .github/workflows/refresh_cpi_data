@@ -1,4 +1,4 @@
-name: Monthly CPI → BigQuery
+name: FRED CPI / Big Query
 
 on:
   workflow_dispatch:
