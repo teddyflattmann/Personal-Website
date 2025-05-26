@@ -19,6 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          cd projects/FRED
           python -m pip install --upgrade pip
           pip install requests pandas google-cloud-bigquery
 
@@ -26,7 +27,7 @@ jobs:
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
         run: |
-          cd projects/BigQuery
+          cd projects/FRED
           echo "$GCP_SA_KEY" > sa.json
           export GOOGLE_APPLICATION_CREDENTIALS=sa.json
           python us_imports_exports.py
