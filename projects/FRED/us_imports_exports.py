@@ -19,7 +19,7 @@ time_filter = f"from {start} to {end}"
 # pulling in imports
 url = "https://api.census.gov/data/timeseries/intltrade/imports/hs"
 params = {
-    "get":      "time,CTY_CODE,CTY_NAME,GEN_VAL_MO",
+    "get":      "GEN_VAL_MO,CTY_NAME",
     "time":     time_filter,
     "CTY_CODE": "*"
 }
@@ -29,8 +29,6 @@ response.raise_for_status()
 
 data = response.json()
 df = pd.DataFrame(data[1:], columns=data[0])
-df['time']       = pd.to_datetime(df['time'], format='%Y-%m')
-df['GEN_VAL_MO'] = df['GEN_VAL_MO'].astype(float)
 
 # write service‐account and init client (once)
 sa_json = os.environ["GCP_SA_KEY"]
@@ -53,7 +51,7 @@ print(f"Loaded {len(df)} import rows into {table_id}")
 # pulling in exports
 url1 = "https://api.census.gov/data/timeseries/intltrade/exports/hs"
 params1 = {
-    "get":      "time,CTY_CODE,CTY_NAME,ALL_VAL_MO",
+    "get":      "ALL_VAL_MO,CTY_NAME",
     "time":     time_filter,
     "CTY_CODE": "*"
 }
@@ -63,8 +61,6 @@ response1.raise_for_status()
 
 data1 = response1.json()
 df1 = pd.DataFrame(data1[1:], columns=data1[0])
-df1['time']       = pd.to_datetime(df1['time'], format='%Y-%m')
-df1['ALL_VAL_MO'] = df1['ALL_VAL_MO'].astype(float)
 
 # defining & configuring export load
 table_id = "fred-460922.fred.US_exports_by_country"
