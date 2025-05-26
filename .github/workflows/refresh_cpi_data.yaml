@@ -32,4 +32,4 @@ jobs:
         cd projects/FRED
         echo "$GCP_SA_KEY" > sa.json
         export GOOGLE_APPLICATION_CREDENTIALS=sa.json
-        python fred_load.py
+        python cpi_load.py
