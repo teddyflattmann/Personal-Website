@@ -29,6 +29,8 @@ response.raise_for_status()
 
 data = response.json()
 df = pd.DataFrame(data[1:], columns=data[0])
+df["GEN_VAL_MO"] = df["GEN_VAL_MO"].astype("Int64")            # pandas nullable integer
+df["time"] = pd.to_datetime(df["time"]).dt.date
 
 # write service‐account and init client (once)
 sa_json = os.environ["GCP_SA_KEY"]
@@ -61,6 +63,8 @@ response1.raise_for_status()
 
 data1 = response1.json()
 df1 = pd.DataFrame(data1[1:], columns=data1[0])
+df1["ALL_VAL_MO"] = df1["ALL_VAL_MO"].astype("Int64")            # pandas nullable integer
+df1["time"] = pd.to_datetime(df1["time"]).dt.date
 
 # defining & configuring export load
 table_id = "fred-460922.fred.US_exports_by_country"
