@@ -5,7 +5,7 @@ from google.cloud import bigquery
 
 
 # defining endpoint and parameters for FRED api
-api_key = "FRED_API_KEY"
+api_key = os.environ["FRED_API_KEY"]
 url = "https://api.stlouisfed.org/fred/series/observations"
 parameters= {
     "series_id": "CPIAUCSL",     #CPI data for all urban consumers 
@@ -34,7 +34,10 @@ df_cpi.to_csv(csv_path, index=False)
 
 # write to google bigquery
 # pointing to service-account
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "GCP_SA_KEY"
+sa_json = os.environ["GCP_SA_KEY"]
+with open("sa.json", "w") as f:
+    f.write(sa_json)
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "sa.json"
 
 # initializing client
 client = bigquery.Client()
