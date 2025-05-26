@@ -19,6 +19,7 @@ jobs:
 
     - name: Install dependencies
       run: |
+        cd projects/FRED        
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
@@ -27,9 +28,7 @@ jobs:
         FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         GCP_SA_KEY:   ${{ secrets.GCP_SA_KEY }}
       run: |
-        # write the service-account key to a file
+        cd projects/FRED
         echo "$GCP_SA_KEY" > sa.json
         export GOOGLE_APPLICATION_CREDENTIALS=sa.json
-
-        # execute the loader
         python fred_load.py
