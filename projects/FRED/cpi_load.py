@@ -5,7 +5,7 @@ from google.cloud import bigquery
 
 
 # defining endpoint and parameters for FRED api
-api_key = 'FRED_API_KEY'
+api_key = "FRED_API_KEY"
 url = "https://api.stlouisfed.org/fred/series/observations"
 parameters= {
     "series_id": "CPIAUCSL",     #CPI data for all urban consumers 
@@ -29,7 +29,7 @@ df_cpi["value"] = pd.to_numeric(df_cpi["value"], errors="coerce") #setting error
 print(df_cpi.head())
 
 # write to local CSV
-csv_path="/Users/theodoreflattmann/Desktop/DataStuff/BigQuery/cpi_data.csv"
+csv_path="cpi_data.csv"
 df_cpi.to_csv(csv_path, index=False)
 
 # write to google bigquery
